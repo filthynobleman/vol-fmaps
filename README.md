@@ -15,7 +15,7 @@ git clone --recursive https://github.com/filthynobleman/vol-fmaps.git
 ```
 **or** to run
 ```
-git submodule uptade --init --recursive --remote
+git submodule update --init --recursive --remote
 ```
 after cloning.  
 
