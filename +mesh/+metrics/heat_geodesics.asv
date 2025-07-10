@@ -1,0 +1,27 @@
+function D = heat_geodesics(M, Source)
+%HEAT_GEODESICS Summary of this function goes here
+%   Detailed explanation goes here
+
+    amplitude = @(X)sqrt( sum( X.^2 ) );
+    normalize = @(X)X ./ repmat(amplitude(X), [3 1]);
+
+    t = 0.1;
+    A = proc.grad_on_verts(mesh.proc.tri_areas(M));
+    Ac = spdiags(1:M.n, 1:M.n, A);
+
+    [S, ~, W] = mesh.proc.FEM_higher(M, 1);
+    DeltaCot = W \ S;
+    
+    Grad = mesh.proc.grad(M);
+    Div = mesh.proc.div(M);
+
+    Delta = zeros(M.n, 1);
+    Delta(Source) = 1;
+
+    u = (Ac + t * DeltaCot) \ Delta;
+    g = Grad * u;
+    h = -normalize(g);
+    phi = Delta \ ()
+
+end
+
